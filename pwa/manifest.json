@@ -1,0 +1,99 @@
+{
+  "name": "DrWEEE Business Suite",
+  "short_name": "DrWEEE",
+  "description": "E-Waste management, POS, HR, Finance and more - Your complete business suite",
+  "start_url": "/app?source=pwa",
+  "scope": "/",
+  "id": "/app",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#00897b",
+  "theme_color": "#00897b",
+  "dir": "auto",
+  "lang": "ar",
+  "categories": ["business", "productivity"],
+  "icons": [
+    {
+      "src": "/pwa/assets/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa/assets/icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa/assets/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa/assets/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa/assets/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa/assets/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa/assets/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa/assets/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa/assets/icons/maskable-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Point of Sale",
+      "short_name": "POS",
+      "url": "/app?module=pos",
+      "icons": [{ "src": "/pwa/assets/icons/icon-96x96.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "E-Waste Manager",
+      "short_name": "E-Waste",
+      "url": "/app?module=ewaste",
+      "icons": [{ "src": "/pwa/assets/icons/icon-96x96.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Finance",
+      "short_name": "Finance",
+      "url": "/app?module=finance",
+      "icons": [{ "src": "/pwa/assets/icons/icon-96x96.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "CRM",
+      "short_name": "CRM",
+      "url": "/app?module=crm",
+      "icons": [{ "src": "/pwa/assets/icons/icon-96x96.png", "sizes": "96x96" }]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}

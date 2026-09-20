@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#00897b">
+    <meta name="format-detection" content="telephone=no">
+
+    <title>DrWEEE</title>
+
+    <link rel="preconnect" href="{{DATAVERSE_URL_PROD}}">
+    <link rel="dns-prefetch" href="{{DATAVERSE_URL_PROD}}">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/svg+xml" href="/images/favicon/favicon.svg">
+
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { min-height: 100%; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #00897b 0%, #26a69a 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .wrap {
+            text-align: center;
+            max-width: 460px;
+            width: 100%;
+        }
+        .logo-icon {
+            font-size: 64px;
+            display: block;
+            animation: float 3s ease-in-out infinite;
+        }
+        .logo-text {
+            font-size: 28px;
+            font-weight: 700;
+            margin-top: 8px;
+            letter-spacing: -1px;
+        }
+        .logo-accent { color: #b2dfdb; }
+        .tagline {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-top: 6px;
+        }
+
+        /* Install tip card */
+        .tip {
+            background: white;
+            color: #333;
+            border-radius: 16px;
+            padding: 20px 18px;
+            margin-top: 28px;
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25);
+            text-align: start;
+        }
+        .tip-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #00897b;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+        .tip-sub {
+            font-size: 12px;
+            color: #666;
+            margin-top: 12px;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        /* Mock of Chrome's "Install app" popup */
+        .mock {
+            background: #2b2b2b;
+            color: #e8e8e8;
+            border-radius: 12px;
+            padding: 14px 14px 12px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+            position: relative;
+        }
+        .mock-title {
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .mock-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .mock-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 6px;
+            flex-shrink: 0;
+            background: #00897b center/70% no-repeat url('/pwa/assets/icons/icon-96x96.png');
+        }
+        .mock-name {
+            font-size: 13px;
+            font-weight: 600;
+        }
+        .mock-url {
+            font-size: 11px;
+            color: #9ecbff;
+        }
+        .mock-actions {
+            display: flex;
+            gap: 6px;
+            justify-content: flex-end;
+            margin-top: 10px;
+        }
+        .mock-btn {
+            font-size: 11px;
+            padding: 5px 12px;
+            border-radius: 999px;
+            border: 0;
+            font-weight: 600;
+        }
+        .mock-btn.primary { background: #1a73e8; color: white; }
+        .mock-btn.ghost { background: #d2e3fc; color: #174ea6; }
+        .mock-arrow {
+            position: absolute;
+            top: -10px;
+            inset-inline-start: 28px;
+            width: 0; height: 0;
+            border-inline-start: 8px solid transparent;
+            border-inline-end: 8px solid transparent;
+            border-bottom: 10px solid #2b2b2b;
+        }
+        .mock-highlight {
+            position: absolute;
+            inset: -3px;
+            border-radius: 14px;
+            box-shadow: 0 0 0 3px #ffd54f;
+            pointer-events: none;
+            animation: pulse-ring 1.6s ease-in-out infinite;
+        }
+        @keyframes pulse-ring {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        /* Spinner / status */
+        .spinner {
+            width: 32px;
+            height: 32px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 22px auto 8px;
+        }
+        .status { font-size: 12px; opacity: 0.85; }
+        .countdown { font-weight: 600; }
+
+        .go-now {
+            display: inline-block;
+            margin-top: 14px;
+            padding: 10px 22px;
+            background: rgba(255,255,255,0.18);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.45);
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+        }
+        .go-now:hover { background: rgba(255,255,255,0.28); }
+
+        @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* iOS-specific (no Chrome install popup there) */
+        body.is-ios .tip-desktop { display: none; }
+        body.is-ios .tip-ios { display: block; }
+        .tip-ios { display: none; text-align: start; }
+        .tip-ios .step {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            margin-top: 8px;
+        }
+        .tip-ios .num {
+            width: 22px; height: 22px;
+            background: #00897b; color: white;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 11px; font-weight: 700; flex-shrink: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <span class="logo-icon">♻</span>
+        <div class="logo-text">Dr.<span class="logo-accent">WEEE</span></div>
+        <p class="tagline">
+            <span data-lang="ar">نظام إدارة النفايات الإلكترونية</span>
+            <span data-lang="en" style="display:none">E-Waste Management System</span>
+        </p>
+
+        <div class="tip">
+            <div class="tip-title">
+                <span data-lang="ar">لتثبيت التطبيق على جهازك</span>
+                <span data-lang="en" style="display:none">To install the app on your device</span>
+            </div>
+
+            <div class="tip-desktop">
+                <div class="mock" aria-hidden="true">
+                    <div class="mock-arrow"></div>
+                    <div class="mock-title">
+                        <span data-lang="ar">تثبيت التطبيق</span>
+                        <span data-lang="en" style="display:none">Install app</span>
+                    </div>
+                    <div class="mock-row">
+                        <div class="mock-icon"></div>
+                        <div>
+                            <div class="mock-name">DrWEEE Business Suite</div>
+                            <div class="mock-url">www.drweee.com</div>
+                        </div>
+                    </div>
+                    <div class="mock-actions">
+                        <button class="mock-btn primary">
+                            <span data-lang="ar">تثبيت</span>
+                            <span data-lang="en" style="display:none">Install</span>
+                        </button>
+                        <button class="mock-btn ghost">
+                            <span data-lang="ar">إلغاء</span>
+                            <span data-lang="en" style="display:none">Cancel</span>
+                        </button>
+                    </div>
+                    <div class="mock-highlight"></div>
+                </div>
+                <p class="tip-sub">
+                    <span data-lang="ar">ستظهر هذه النافذة في أعلى المتصفح. اضغط على <strong>تثبيت</strong> للمتابعة.</span>
+                    <span data-lang="en" style="display:none">This popup will appear at the top of your browser. Click <strong>Install</strong> to continue.</span>
+                </p>
+            </div>
+
+            <div class="tip-ios">
+                <div class="step">
+                    <span class="num">1</span>
+                    <span>
+                        <span data-lang="ar">اضغط على زر المشاركة ⬆️ في الأسفل</span>
+                        <span data-lang="en" style="display:none">Tap the Share button ⬆️ at the bottom</span>
+                    </span>
+                </div>
+                <div class="step">
+                    <span class="num">2</span>
+                    <span>
+                        <span data-lang="ar">اختر "إضافة إلى الشاشة الرئيسية"</span>
+                        <span data-lang="en" style="display:none">Select "Add to Home Screen"</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="spinner"></div>
+        <div class="status">
+            <span data-lang="ar">جاري فتح التطبيق خلال <span class="countdown" id="cd">5</span> ثوانٍ...</span>
+            <span data-lang="en" style="display:none">Opening app in <span class="countdown" id="cd-en">5</span>s...</span>
+        </div>
+        <a class="go-now" id="goNow" href="{{DATAVERSE_URL_PROD}}/WebResources/crd33_home">
+            <span data-lang="ar">فتح الآن</span>
+            <span data-lang="en" style="display:none">Open now</span>
+        </a>
+    </div>
+
+    <script>
+        // /app is a thin splash that forwards into the real app on D365.
+        // The PWA (manifest + install + service worker) lives on the D365
+        // origin as the crd33_home web resource so the installed window
+        // stays in-scope and Chrome doesn't show a URL bar.
+        (function () {
+            const base = '{{DATAVERSE_URL_PROD}}'.replace(/\/+$/, '');
+            const params = new URLSearchParams(window.location.search);
+            const moduleParam = params.get('module');
+            let target = base + '/WebResources/crd33_home';
+            if (moduleParam) target += '#' + moduleParam;
+
+            const lang = localStorage.getItem('drweee_lang') || 'ar';
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.querySelectorAll('[data-lang]').forEach(el => {
+                el.style.display = el.dataset.lang === lang ? '' : 'none';
+            });
+
+            // Platform-specific tip
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+            if (isIOS) document.body.classList.add('is-ios');
+
+            document.getElementById('goNow').href = target;
+
+            // Suppress any drweee.com-origin install prompt — installation must
+            // happen on the D365 origin (crd33_home), not here.
+            window.addEventListener('beforeinstallprompt', e => e.preventDefault());
+
+            // Unregister any stale drweee.com SW from earlier PWA builds so it
+            // can't intercept anything on this origin.
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.getRegistrations().then(regs => {
+                    regs.forEach(r => r.unregister().catch(() => {}));
+                }).catch(() => {});
+            }
+
+            // Countdown then redirect (gives the user time to read the tip)
+            let seconds = 5;
+            const cdAr = document.getElementById('cd');
+            const cdEn = document.getElementById('cd-en');
+            const tick = setInterval(() => {
+                seconds -= 1;
+                if (cdAr) cdAr.textContent = seconds;
+                if (cdEn) cdEn.textContent = seconds;
+                if (seconds <= 0) {
+                    clearInterval(tick);
+                    window.location.replace(target);
+                }
+            }, 1000);
+        })();
+    </script>
+</body>
+</html>
