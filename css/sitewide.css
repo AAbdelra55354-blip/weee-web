@@ -1978,35 +1978,217 @@ html body:not(.rebrand-page) .social-card { transition: transform .35s cubic-bez
     .cycle-rail__inner span:nth-child(4) { border-top: 2px solid rgba(0,0,0,.35); }
 }
 @media (max-width: 850px) {
-    html body.rebrand-page .rebrand-hero__inner {
+    /* Mobile Hero Container & Dimensions */
+    html body.rebrand-page .rebrand-hero {
+        min-height: 100dvh !important;
+        min-height: 100svh !important;
+        min-height: 100vh !important;
+        position: relative !important;
+        overflow: hidden !important;
+        display: flex !important;
         flex-direction: column !important;
-        align-items: flex-start !important;
-        padding-top: 76px !important;
-        gap: 20px !important;
+        justify-content: space-between !important;
+        padding-bottom: 28px !important;
     }
+
+    /* Video Background Mobile Coverage & Framing */
+    html body.rebrand-page .rebrand-hero__video-bg {
+        position: absolute !important;
+        inset: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        overflow: hidden !important;
+        z-index: 0 !important;
+    }
+
+    html body.rebrand-page .rebrand-hero__video {
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        width: 100% !important;
+        height: 100% !important;
+        min-width: 100% !important;
+        min-height: 100% !important;
+        transform: translate(-50%, -50%) !important;
+        object-fit: cover !important;
+        object-position: center 62% !important;
+        filter: brightness(0.92) contrast(1.08) !important;
+    }
+
+    /* Mobile Gradient Overlay: Keeps text crisp while letting the animated video shine through */
+    html body.rebrand-page .rebrand-hero__video-overlay,
+    html[dir="rtl"] body.rebrand-page .rebrand-hero__video-overlay {
+        position: absolute !important;
+        inset: 0 !important;
+        background: linear-gradient(180deg, 
+            rgba(16, 47, 40, 0.88) 0%, 
+            rgba(16, 47, 40, 0.72) 35%, 
+            rgba(16, 47, 40, 0.26) 60%, 
+            rgba(16, 47, 40, 0.84) 100%) !important;
+        z-index: 1 !important;
+    }
+
+    /* Hero Inner Layout */
+    html body.rebrand-page .rebrand-hero__inner {
+        min-height: auto !important;
+        flex: 1 0 auto !important;
+        padding-top: 92px !important;
+        padding-bottom: 20px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: flex-start !important;
+        gap: 14px !important;
+        width: 100% !important;
+    }
+
     html body.rebrand-page .rebrand-hero__copy {
         width: 100% !important;
         max-width: 100% !important;
     }
-    html body.rebrand-page .rebrand-hero__visual {
-        width: 100% !important;
-        height: auto !important;
-        margin-top: 8px !important;
+
+    html body.rebrand-page .rebrand-kicker {
+        font-size: 0.72rem !important;
+        padding: 4px 10px !important;
+        margin-bottom: 12px !important;
     }
-    html body.rebrand-page .rebrand-hero__image-wrap {
+
+    html body.rebrand-page .rebrand-hero h1 {
+        font-size: clamp(2.35rem, 8.5vw, 3.4rem) !important;
+        line-height: 0.98 !important;
+        letter-spacing: -0.05em !important;
+        margin: 0 0 12px !important;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.55) !important;
+    }
+
+    html body.rebrand-page .rebrand-hero h1 em {
+        color: var(--brand-leaf, #d9f36a) !important;
+    }
+
+    html body.rebrand-page .rebrand-hero__copy p {
+        font-size: 0.96rem !important;
+        line-height: 1.55 !important;
         max-width: 100% !important;
-        height: auto !important;
+        margin-bottom: 22px !important;
+        color: rgba(255, 255, 255, 0.94) !important;
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7) !important;
     }
+
+    html body.rebrand-page .rebrand-hero__actions {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 10px !important;
+    }
+
+    html body.rebrand-page .rebrand-hero__actions .rebrand-button--lime {
+        width: 100% !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 10px !important;
+        padding: 13px 20px !important;
+        font-size: 1rem !important;
+        border-radius: 8px !important;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35) !important;
+    }
+
+    html body.rebrand-page .rebrand-hero__actions .rebrand-text-link {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        padding: 8px 0 !important;
+        font-size: 0.9rem !important;
+        color: rgba(255, 255, 255, 0.88) !important;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6) !important;
+    }
+
+    /* Section Directly Under Hero: 100% Symmetrical 3-Column Proof Section */
+    html body.rebrand-page .rebrand-proof {
+        padding: 22px 0 !important;
+        background: var(--brand-leaf, #d9f36a) !important;
+        border-top: 3px solid var(--brand-ink) !important;
+        border-bottom: 2px solid var(--brand-ink) !important;
+        position: relative !important;
+        z-index: 3 !important;
+    }
+
     html body.rebrand-page .rebrand-proof__grid {
-        grid-template-columns: 1fr 1fr !important;
-        gap: 16px !important;
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 10px !important;
+        align-items: stretch !important;
     }
+
+    /* Brief Header Row spanning across all 3 columns */
     html body.rebrand-page .rebrand-proof__grid > div:first-child {
-        grid-column: span 2 !important;
+        grid-column: 1 / -1 !important;
+        margin-bottom: 6px !important;
+        padding-bottom: 12px !important;
+        border-bottom: 1.5px solid rgba(16, 47, 40, 0.22) !important;
+        text-align: left !important;
     }
-    html body.rebrand-page .hero {
-        padding-top: 80px !important;
-        padding-bottom: 36px !important;
+
+    html body.rebrand-page .rebrand-proof__grid > div:first-child .rebrand-mono {
+        font-size: 0.72rem !important;
+        letter-spacing: 0.12em !important;
+        color: rgba(16, 47, 40, 0.8) !important;
+        font-weight: 700 !important;
+        margin-bottom: 4px !important;
+        display: inline-block !important;
+    }
+
+    html body.rebrand-page .rebrand-proof__grid > div:first-child p {
+        font-size: 0.95rem !important;
+        line-height: 1.4 !important;
+        max-width: 100% !important;
+        font-weight: 700 !important;
+        color: var(--brand-ink) !important;
+        margin: 0 !important;
+    }
+
+    /* 3 Balanced Stat Metric Cards */
+    html body.rebrand-page .rebrand-proof__grid > div:not(:first-child) {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        padding: 10px 8px !important;
+        background: rgba(255, 255, 255, 0.35) !important;
+        border: 1.5px solid rgba(16, 47, 40, 0.2) !important;
+        border-radius: 8px !important;
+        box-shadow: 0 2px 6px rgba(16, 47, 40, 0.06) !important;
+        text-align: center !important;
+    }
+
+    html body.rebrand-page .rebrand-proof strong {
+        font-size: clamp(1.4rem, 4.8vw, 1.95rem) !important;
+        line-height: 0.95 !important;
+        letter-spacing: -0.05em !important;
+        color: var(--brand-ink) !important;
+        margin: 0 !important;
+    }
+
+    html body.rebrand-page .rebrand-proof strong span {
+        font-size: 0.95rem !important;
+    }
+
+    html body.rebrand-page .rebrand-proof__grid > div > span:last-child {
+        font-size: 0.58rem !important;
+        line-height: 1.25 !important;
+        margin-top: 5px !important;
+        font-weight: 800 !important;
+        letter-spacing: 0.04em !important;
+        text-transform: uppercase !important;
+        color: rgba(16, 47, 40, 0.88) !important;
+    }
+
+    /* RTL Arabic Harmonization for Proof Section */
+    html[dir="rtl"] body.rebrand-page .rebrand-proof__grid > div:first-child {
+        text-align: right !important;
+    }
+    html[dir="rtl"] body.rebrand-page .rebrand-proof__grid > div:not(:first-child) {
+        text-align: center !important;
     }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -2092,7 +2274,8 @@ html body .logo img,
 html body .header__logo img,
 html body .footer__logo img { box-shadow: none !important; }
 @media (max-width: 850px) {
-    html body.rebrand-page .rebrand-hero, html body.rebrand-page .rebrand-hero__inner { min-height: 100vh !important; }
+    html body.rebrand-page .rebrand-hero { min-height: 100dvh !important; min-height: 100vh !important; }
+    html body.rebrand-page .rebrand-hero__inner { min-height: auto !important; }
     html body.rebrand-page .rebrand-method-grid { gap: 14px; }
     html body.rebrand-page .rebrand-method-card, html body.rebrand-page .rebrand-method-card + .rebrand-method-card { border: 2px solid var(--brand-ink) !important; padding: 24px !important; }
 }

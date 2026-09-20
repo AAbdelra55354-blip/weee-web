@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
     initCounters();
     initImpactCharts();
     initHeroStoryBar();
+    initHeroVideo();
     initCarousels();
     initContactForm();
     initLazyLoading();
@@ -1146,6 +1147,51 @@ function initHeroStoryBar() {
             updateProgress(fallbackTick, 10);
         }
     }, 100);
+}
+
+// Ensure hero background video plays reliably on mobile and desktop
+function initHeroVideo() {
+    const video = document.getElementById('heroVideo') || document.querySelector('.rebrand-hero__video');
+    if (!video) return;
+
+    // Mobile autoplay mandates muted and playsInline
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+    video.setAttribute('x5-playsinline', '');
+
+    const tryPlay = () => {
+        if (video.paused) {
+            video.muted = true;
+            const playPromise = video.play();
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    video.classList.add('is-playing');
+                }).catch(() => {
+                    // Autoplay with sound or battery saver prevented, force muted playback
+                    video.muted = true;
+                    video.play().then(() => {
+                        video.classList.add('is-playing');
+                    }).catch(() => {});
+                });
+            }
+        } else {
+            video.classList.add('is-playing');
+        }
+    };
+
+    // Immediate attempt
+    tryPlay();
+
+    // Mobile fallback triggers on first interaction
+    document.addEventListener('touchstart', tryPlay, { once: true, passive: true });
+    document.addEventListener('scroll', tryPlay, { once: true, passive: true });
+    window.addEventListener('load', tryPlay);
+    document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) tryPlay();
+    });
 }
 
 // Carousel functionality

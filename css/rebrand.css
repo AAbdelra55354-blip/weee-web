@@ -136,8 +136,8 @@ body.rebrand-page { background: var(--rebrand-cream); color: var(--rebrand-ink);
     .rebrand-hero h1 { font-size: clamp(3.5rem, 15vw, 6rem); }
     .rebrand-hero__visual { width: 72%; height: 430px; top: 500px; right: 2%; }
     .rebrand-hero__image-wrap { height: 360px; }
-    .rebrand-proof__grid { grid-template-columns: 1fr 1fr; padding: 32px 0; gap: 28px 14px; }
-    .rebrand-proof__grid > div:first-child { grid-column: span 2; }
+    .rebrand-proof__grid { grid-template-columns: repeat(3, 1fr); padding: 22px 0; gap: 10px; }
+    .rebrand-proof__grid > div:first-child { grid-column: 1 / -1; }
     .rebrand-section__intro, .rebrand-story__grid { grid-template-columns: 1fr; gap: 28px; }
     .rebrand-section__intro h2, .rebrand-story h2 { margin: 0; }
     .rebrand-method-grid { grid-template-columns: 1fr; }
@@ -464,8 +464,8 @@ body.rebrand-page {
     .rebrand-hero__image-wrap { height: 300px; }
     .rebrand-hero__stamp { width: 108px; height: 108px; left: -7%; }
     .rebrand-hero__rail { font-size: .52rem; padding: 10px 12px; }
-    .rebrand-proof__grid { grid-template-columns: 1fr 1fr; }
-    .rebrand-proof strong { font-size: 2.5rem; }
+    .rebrand-proof__grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .rebrand-proof strong { font-size: clamp(1.35rem, 5vw, 1.95rem); }
 }
 
 /* Interior pages: one shared visual language */
