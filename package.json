@@ -11,7 +11,6 @@
     "start": "node js/server.js",
     "dev": "NODE_ENV=development node js/server.js",
     "prod": "NODE_ENV=production node js/server.js",
-    "build": "echo 'No build step required for this project'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

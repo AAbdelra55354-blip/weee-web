@@ -3,7 +3,7 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "outputDirectory": ".",
-  "buildCommand": "echo 'DR.WEEE Circular Systems Platform ready'",
+  "buildCommand": null,
   "headers": [
     {
       "source": "/(.*)",
