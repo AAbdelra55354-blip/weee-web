@@ -90,6 +90,16 @@
 
     <!-- EmailJS SDK for sending contact form emails -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        window.DRWEEE_EMAILJS_PUBLIC_KEY = 'T8cu0v8H3T2GABEN7';
+        window.DRWEEE_EMAILJS_SERVICE_ID = 'service_mku34hu';
+        window.DRWEEE_EMAILJS_TEMPLATE_ID = 'template_b6swphk';
+        if (typeof emailjs !== 'undefined') {
+            try {
+                emailjs.init({ publicKey: window.DRWEEE_EMAILJS_PUBLIC_KEY });
+            } catch (e) { }
+        }
+    </script>
 </head>
 
 <body class="contact-page rebrand-page">

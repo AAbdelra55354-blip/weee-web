@@ -1276,16 +1276,27 @@ function initContactForm() {
 
             // 3. Send email via EmailJS to essam.drweee@gmail.com
             try {
-                // EmailJS configuration — set your keys after account setup
-                const EMAILJS_PUBLIC_KEY = window.DRWEEE_EMAILJS_PUBLIC_KEY || '';
-                const EMAILJS_SERVICE_ID = window.DRWEEE_EMAILJS_SERVICE_ID || '';
-                const EMAILJS_TEMPLATE_ID = window.DRWEEE_EMAILJS_TEMPLATE_ID || '';
+                // EmailJS configuration — configured with DR.WEEE keys
+                const EMAILJS_PUBLIC_KEY = window.DRWEEE_EMAILJS_PUBLIC_KEY || 'T8cu0v8H3T2GABEN7';
+                const EMAILJS_SERVICE_ID = window.DRWEEE_EMAILJS_SERVICE_ID || 'service_mku34hu';
+                const EMAILJS_TEMPLATE_ID = window.DRWEEE_EMAILJS_TEMPLATE_ID || 'template_b6swphk';
 
                 if (EMAILJS_PUBLIC_KEY && EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID && window.emailjs) {
+                    if (typeof window.emailjs.init === 'function') {
+                        try {
+                            window.emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+                        } catch (initErr) {
+                            // Init fallback if already initialized
+                        }
+                    }
+
                     const emailParams = {
                         from_name: inquiryRecord.name,
+                        name: inquiryRecord.name,
                         from_email: inquiryRecord.email,
-                        phone: inquiryRecord.phone,
+                        email: inquiryRecord.email,
+                        reply_to: inquiryRecord.email,
+                        phone: inquiryRecord.phone || 'Not provided',
                         subject: inquiryRecord.subject,
                         message: inquiryRecord.message,
                         inquiry_id: inquiryRecord.id,
