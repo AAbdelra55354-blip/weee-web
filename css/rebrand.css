@@ -133,7 +133,7 @@ body.rebrand-page { background: var(--rebrand-cream); color: var(--rebrand-ink);
     .rebrand-hero, .rebrand-hero__inner { min-height: 930px; }
     .rebrand-hero__inner { padding-top: 130px; }
     .rebrand-hero__copy { width: 100%; }
-    .rebrand-hero h1 { font-size: clamp(3.5rem, 15vw, 6rem); }
+    .rebrand-hero h1 { font-size: clamp(1.65rem, 5.8vw, 2.25rem); line-height: 1.05; letter-spacing: -0.035em; }
     .rebrand-hero__visual { width: 72%; height: 430px; top: 500px; right: 2%; }
     .rebrand-hero__image-wrap { height: 360px; }
     .rebrand-proof__grid { grid-template-columns: repeat(3, 1fr); padding: 22px 0; gap: 10px; }
@@ -447,18 +447,16 @@ body.rebrand-page {
 @media (max-width: 850px) {
     .rebrand-hero, .rebrand-hero__inner { min-height: 900px; }
     .rebrand-hero__copy { width: 100%; }
-    .rebrand-hero h1 { font-size: clamp(3.45rem, 15vw, 6rem); }
+    .rebrand-hero h1 { font-size: clamp(1.6rem, 5.5vw, 2.15rem); line-height: 1.05; letter-spacing: -0.035em; }
     .rebrand-hero__visual { width: 78%; top: 500px; right: 0; }
     .rebrand-hero__image-wrap { width: min(400px, 90%); height: 350px; }
-    .rebrand-proof__grid { gap: 24px 14px; }
+    .rebrand-proof__grid { gap: 16px 10px; }
 }
 
 @media (max-width: 520px) {
-    .rebrand-hero, .rebrand-hero__inner { min-height: 840px; }
-    .rebrand-hero__inner { padding-top: 118px; }
-    .rebrand-hero h1 { font-size: clamp(3rem, 16vw, 4.6rem); }
-    .rebrand-hero__copy p { font-size: .98rem; }
-    .rebrand-hero__actions { gap: 16px; }
+    .rebrand-hero h1 { font-size: clamp(1.45rem, 5.2vw, 1.85rem); line-height: 1.05; letter-spacing: -0.03em; }
+    .rebrand-hero__copy p { font-size: 0.84rem; line-height: 1.5; }
+    .rebrand-hero__actions { gap: 10px; }
     .rebrand-button { width: 100%; justify-content: space-between; }
     .rebrand-hero__visual { top: 492px; width: 88%; }
     .rebrand-hero__image-wrap { height: 300px; }
